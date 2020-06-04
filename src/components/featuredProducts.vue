@@ -14,7 +14,9 @@
             <p class="price">${{product.price}}</p>
             </router-link>
         </div>
-        <div class="featured_products_browse_all">Browse All Products</div>
+        <router-link to="products" class="featured_products_browse_all">Browse All Products
+             <font-awesome-icon icon="long-arrow-alt-right" />
+    </router-link>
     </div>
 </template>
 
@@ -137,6 +139,7 @@ export default {
     justify-content: space-around;
     align-items: center;
     margin: 0 auto;
+    margin-top: 3.5em;
     width: 13.250em;
     height: 3em;
     background-color: #f16d7f;
@@ -145,5 +148,6 @@ export default {
     font-weight: 700;
     letter-spacing: 0.025em;
     color: #ffffff;
+    text-decoration: none;
 }
 </style>

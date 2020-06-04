@@ -36,7 +36,7 @@ export default {
 .promo {
   display: flex;
   align-items: center;
-  background-image: url(../assets/img/promo-back.jpg);
+  background-image: url(https://i.ibb.co/TRDTJD2/promo-back.jpg);
   background-color: #e8e8e8;
   background-repeat: no-repeat;
   width: 100%;
@@ -102,13 +102,13 @@ export default {
 }
 
 .offers__left .offers__poster:first-of-type {
-  background-image: url(../assets/img/Layer_30.jpg);
+  background-image: url(https://i.ibb.co/0f6BJvf/Layer-30.jpg);
   background-repeat: no-repeat;
   height: 33.8em;
 }
 
 .offers__left .offers__poster:last-of-type {
-  background-image: url(../assets/img/Layer_37.jpg);
+  background-image: url(https://i.ibb.co/VV9Vcmz/Layer-37.jpg);
   background-repeat: no-repeat;
   background-color: #dadad2;
   background-position: 124%;
@@ -117,13 +117,13 @@ export default {
 }
 
 .offers__right .offers__poster:first-of-type  {
-  background-image: url(../assets/img/Layer_32.jpg);
+  background-image: url(https://i.ibb.co/gM8ZrQv/Layer-32.jpg);
   background-repeat: no-repeat;
   height: 16em;
 }
 
 .offers__right .offers__poster:last-of-type {
-  background-image: url(../assets/img/Layer_31.jpg);
+  background-image: url(https://i.ibb.co/4ptQDkq/Layer-31.jpg);
   background-repeat: no-repeat;
   height: 33.8em;
   margin-top: 1.2em;
