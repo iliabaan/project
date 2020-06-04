@@ -6,14 +6,17 @@
   </div>
   <div class="offers">
     <div class="offers__left">
-      <div class="offers__poster"><div><h3>hOT dEAL <br><span>FOR MEN</span></h3>
-      </div></div>
-      <div class="offers__poster"><div><h3>LUXIROUS & trendy <br><span>ACCESORIES</span></h3>
-      </div></div>
+      <router-link to="man" class="offers__poster"><div><h3>hOT dEAL <br><span>FOR MEN</span></h3>
+      </div></router-link>
+      <router-link to="accoseriese" class="offers__poster"><div>
+        <h3>LUXIROUS & trendy <br><span>ACCESORIES</span></h3>
+      </div></router-link>
     </div>
     <div class="offers__right">
-      <div class="offers__poster"><div><h3>30% offer <br><span>women</span></h3></div></div>
-      <div class="offers__poster"><div><h3>new arrivals <br><span>FOR kids</span></h3></div></div>
+      <router-link to="women" class="offers__poster"><div>
+        <h3>30% offer <br><span>women</span></h3></div></router-link>
+      <router-link to="kids" class="offers__poster">
+      <div><h3>new arrivals <br><span>FOR kids</span></h3></div></router-link>
     </div>
   </div>
 </div>
@@ -85,6 +88,10 @@ export default {
 .offers h3 span {
   color: #f16d7f;
   font-size: 1.5em;
+}
+
+.offers__poster {
+  text-decoration: none;
 }
 
 .offers__left, .offers__right {
