@@ -39,10 +39,21 @@
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, cupiditate."</p>
           <p>{{users[0].name}}</p>
           <p>{{users[0].address.city}}</p>
-        </div>
+                <div class="review-change_btns">
+          <div></div>
+          <div></div>
+          <div></div>
       </div>
-      <div></div>
-      <div class="subscribe"></div>
+        </div>
+              </div>
+        <div class="vertical-line"></div>
+        <div class="subscribe">
+            <p>Subscribe<br><span>FOR OUR NEWLETTER AND PROMOTION</span></p>
+            <div class="subscribe-input_email">
+            <input type="text" placeholder="Enter Your Email">
+            <div>Subscribe</div>
+            </div>
+        </div>
     </div>
   </div>
 </template>
@@ -55,8 +66,8 @@ export default {
       users: [],
     };
   },
-  mounted() {
-    this.$root.getJson('https://jsonplaceholder.typicode.com/users')
+  async mounted() {
+    await this.$root.getJson('https://jsonplaceholder.typicode.com/users')
       .then((data) => {
         data.forEach((element) => {
           this.users.push(element);
@@ -67,6 +78,11 @@ export default {
 </script>
 
 <style scoped>
+
+.poster_and_subscribe {
+    margin-top: 5em;
+}
+
 .poster__block {
      display: flex;
      width: 80%;
@@ -192,5 +208,96 @@ export default {
     line-height: 14px;
     font-weight: 300;
     color: #222224;
+}
+
+.review-change_btns {
+    margin-top: 2em;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.review-change_btns > div {
+    width: 2.5em;
+    height: 4px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.review-change_btns > div:hover {
+    background-color: #f16d7f;
+}
+
+.vertical-line {
+    width: 1px;
+    height: 95%;
+    background-color: #ffffff;
+    justify-self: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.subscribe {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin: 0 auto;
+    margin-top: 9em;
+    text-align: center;
+}
+
+.subscribe > p {
+    font-size: 24px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    color: #222224;
+}
+
+.subscribe > p > span {
+    font-size: 14px;
+    line-height: 24px;
+    text-transform: none;
+}
+
+.subscribe-input_email {
+    width: 100%;
+    height: 46px;
+    background-color: #e1e1e1;
+    display: flex;
+    margin-top: 2em;
+    flex-direction: row;
+    border-radius: 23.0px;
+}
+
+.subscribe-input_email > input{
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 23px;
+    border-bottom-left-radius: 23px;
+    border: none;
+    background-color: #e1e1e1;
+    outline: none;
+    padding: 0 5%;
+    font-size: 14px;
+    opacity: 0.67;
+    font-weight: 400;
+    letter-spacing: 0.025em;
+    color: #222224;
+}
+
+.subscribe-input_email > div {
+    width: 40%;
+    height: 100%;
+    background-color: #f16d7f;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 0.0px 23.0px 23.0px 0.0px;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.025em;
+    color: #ffffff;
 }
 </style>

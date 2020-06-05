@@ -19,21 +19,21 @@
         <ul class="footer__right-menu">
          <h3 class="usefulInfo-heading h-company">COMPANY</h3>
           <li v-for="elem in menuElemsOne" :key="elem.title">
-              <router-link :to="`${elem.path}`">{{elem.title}}
+              <router-link :to="`/${elem.path}`">{{elem.title}}
               </router-link>
           </li>
         </ul>
         <ul class="footer__right-menu">
                  <h3 class="usefulInfo-heading h-company">INFORMATION</h3>
           <li v-for="elem in menuElemsTwo" :key="elem.title">
-              <router-link :to="`${elem.path}`">{{elem.title}}
+              <router-link :to="`/${elem.path}`">{{elem.title}}
               </router-link>
           </li>
         </ul>
         <ul class="footer__right-menu">
                  <h3 class="usefulInfo-heading h-company">SHOP CATEGORY</h3>
           <li v-for="elem in menuElemsThree" :key="elem.title">
-              <router-link :to="`${elem.path}`">{{elem.title}}
+              <router-link :to="`/products/${elem.path}`">{{elem.title}}
               </router-link>
           </li>
         </ul>
@@ -76,7 +76,7 @@ export default {
         { title: 'Women', path: 'women' },
         { title: 'Child', path: 'child' },
         { title: 'Apparel', path: 'apparel' },
-        { title: 'Brows All', path: 'brows All' },
+        { title: 'Brows All', path: '/' },
       ],
     };
   },

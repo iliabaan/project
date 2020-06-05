@@ -14,7 +14,6 @@ new Vue({
       return fetch(url)
         .then((result) => result.json())
         .catch((error) => {
-          // this.$refs.error.setError(error);
           console.log(error);
         });
     },

@@ -3,7 +3,7 @@
         <h1>Featured Products</h1>
         <div class="featured_products_list">
             <router-link :to="`product/id/${product.id}`" class="featured_product"
-             v-for="product in products" :key="product.id">
+             v-for="product in products.slice(0,8)" :key="product.id">
              <div class="add_to_cart">
                  <div class="add_to_cart_block">
                      <p><font-awesome-icon icon="cart-plus" />Add to Cart</p>

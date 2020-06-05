@@ -7,10 +7,10 @@
             <h1 class="logo_text">BRAN<span class="logo_text logo_text_pink">D</span></h1>
           </router-link>
           <form class="header__search" action="#">
-            <a href="#" class="button_browse">
+            <router-link to="/products/" class="button_browse">
               <p class="button_browse_text">Browse</p>
               <font-awesome-icon icon="caret-down" class="caret-down"></font-awesome-icon>
-            </a>
+            </router-link>
             <div class="search_field">
               <input type="text" class="search_browse" placeholder="Search for Item...">
               <a href="#">
@@ -33,12 +33,12 @@
       </div>
       <div id="nav">
         <router-link to="/">Home</router-link>
-        <router-link to="/man">Man</router-link>
-        <router-link to="/women">Women</router-link>
-        <router-link to="/kids">Kids</router-link>
-        <router-link to="/accoseriese">Accoseriese</router-link>
-        <router-link to="/featured">Featured</router-link>
-        <router-link to="/hot-deals">Hot Deals</router-link>
+        <router-link to="/products/man">Man</router-link>
+        <router-link to="/products/women">Women</router-link>
+        <router-link to="/products/kids">Kids</router-link>
+        <router-link to="/products/accoseriese">Accoseriese</router-link>
+        <router-link to="/products/featured">Featured</router-link>
+        <router-link to="/products/hot-deals">Hot Deals</router-link>
       </div>
     </header>
 </template>
