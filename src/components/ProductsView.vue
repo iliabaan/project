@@ -3,8 +3,10 @@
         <h1 v-if="header">{{ header }}</h1>
         <div class="products__list">
           <h4 class="empty-msg" v-if="showMessage">Nothing to show :(</h4>
-            <router-link :to="`product/id/${product.id}`" class="product"
-             v-for="product in filtered" :key="product.id">
+            <router-link :to="`product/id/${product.id}`"
+            class="product"
+            v-for="product in filtered" :key="product.id"
+            >
              <div class="add-to-cart">
                  <div class="add-to-cart__block">
                      <p><font-awesome-icon icon="cart-plus" />Add to Cart</p>
@@ -78,7 +80,9 @@ export default {
 }
 
  .featured > .products__list {
-   width: 100%;
+   width: 88%;
+   margin: 0 auto;
+   display: flex;
  }
 
 .products__list {
@@ -86,13 +90,13 @@ export default {
     flex-direction: row;
     width: 1000px;
     margin: 0 auto;
-    margin-left: 50px;
+    margin-left: 60px;
     flex-wrap: wrap;
 }
 
 .product {
     display: flex;
-    margin: 5px 15px;
+    margin: 5px 10px;
     flex-direction: column;
     height: 376px;
     text-decoration: none;
