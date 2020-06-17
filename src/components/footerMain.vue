@@ -72,10 +72,10 @@ export default {
         { title: 'Promotion', path: 'promotion' },
       ],
       menuElemsThree: [
-        { title: 'Men', path: 'men' },
-        { title: 'Women', path: 'women' },
-        { title: 'Child', path: 'child' },
-        { title: 'Apparel', path: 'apparel' },
+        { title: 'Men', path: 'man' },
+        { title: 'Women', path: 'woman' },
+        { title: 'Child', path: 'kids' },
+        { title: 'Apparel', path: 'accoseriese' },
         { title: 'Brows All', path: '/' },
       ],
     };
