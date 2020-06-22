@@ -61,11 +61,10 @@ export default {
   },
   watch: {
     checkedSizes() {
-      this.sortProducts(this.checkedSizes);
-    //   this.checkedSizes.forEach((element) => {
-    //     this.sortProducts(element);
-    //     console.log(element);
-    //   });
+      this.checkedSizes.forEach((element) => {
+        this.sortProducts(element);
+        console.log(element);
+      });
     },
   },
   computed: {
