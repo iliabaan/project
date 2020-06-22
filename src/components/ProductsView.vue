@@ -47,15 +47,47 @@ export default {
   methods: {
     ...mapActions(['fetchProducts']),
     sortProducts(sorter) {
-      this.sortedProducts = [];
-      this.filteredProducts([this.keys, this.values]).map((item) => {
-        if (item.type === sorter.type) {
-          this.sortedProducts.push(item);
-        }
-        this.showSorted = true;
-        return this.sortedProducts;
-      });
+      this.showSorted = true;
+      if (sorter.sort_type === 'category') {
+        this.sortedProducts = [];
+        this.sortedProducts = this.filteredProducts([this.keys, this.values])
+          .filter((item) => item.type === sorter.type);
+      } else if (sorter.sort_type === 'size') {
+        if (this.sortedProducts.length) {
+          this.sortedProducts = this.sortedProducts
+            .filter((item) => item.sizes.includes(sorter.type.toString()));
+          return this.sortedProducts;
+        } this.sortedProducts = this.filteredProducts([this.keys, this.values])
+          .filter((item) => item.sizes.includes(sorter.type.toString()));
+      } else {
+        if (this.sortedProducts.length) {
+          this.sortedProducts = this.sortedProducts
+            .filter((item) => item[sorter.sort_type] === sorter.type);
+          return this.sortedProducts;
+        } this.sortedProducts = this.filteredProducts([this.keys, this.values])
+          .filter((item) => item[sorter.sort_type] === sorter.type);
+      }
+      return this.sortedProducts;
     },
+    a() {
+      this.sortedProducts = this.filteredProducts([this.keys, this.values]);
+    },
+    // filterProducts(sorterByBrand, sorterByDesigner, sorterBySize, sorterByPrice) {
+    //   if (sorterByBrand) {
+    //     console.log(sorterByBrand, 'PV');
+    //     this.sortedProducts.filter((item) => item.brand === sorterByBrand);
+    //   }
+    //   if (sorterByDesigner) {
+    //     console.log(sorterByBrand, 'BAD PV');
+    //     this.sortedProducts.filter((item) => item.designer === sorterByDesigner);
+    //   }
+    //   if (sorterBySize) {
+    //     this.sortedProducts.filter((item) => item.size === sorterBySize);
+    //   }
+    //   if (sorterByPrice) {
+    //     this.sortedProducts.filter((item) => item.price === sorterByPrice);
+    //   }
+    // },
     showMessageFunc(boo) {
       this.showMessage = boo;
     },
@@ -80,9 +112,10 @@ export default {
 }
 
  .featured > .products__list {
-   width: 88%;
-   margin: 0 auto;
+   width: 100%;
+   justify-content: space-around;
    display: flex;
+   margin-left: 0;
  }
 
 .products__list {

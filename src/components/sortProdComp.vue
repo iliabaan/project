@@ -7,8 +7,9 @@
         <div>
             <h4>Size</h4>
             <div>
-             <p v-for="size in sizes" :key='size'>
-             <input type="checkbox" :name="size" :value="size">{{size}}</p>
+             <p v-for="size in sizes" :key='size.type'>
+             <input type="checkbox" :name="size" :value="size"
+             v-model="checkedSizes">{{size.type}}</p>
              </div>
         </div>
         <div>
@@ -41,21 +42,49 @@
 
 export default {
   name: 'sortprodcomp',
+  props: ['sortProducts'],
   data() {
     return {
-      sizes: ['XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL'],
+      sizes: [
+        { type: 'XXS', sort_type: 'size' },
+        { type: 'XS', sort_type: 'size' },
+        { type: 'S', sort_type: 'size' },
+        { type: 'M', sort_type: 'size' },
+        { type: 'L', sort_type: 'size' },
+        { type: 'XL', sort_type: 'size' },
+        { type: 'XXL', sort_type: 'size' },
+      ],
       minPrice: 0,
       maxPrice: 100,
+      checkedSizes: [],
     };
+  },
+  watch: {
+    checkedSizes() {
+      this.sortProducts(this.checkedSizes);
+    //   this.checkedSizes.forEach((element) => {
+    //     this.sortProducts(element);
+    //     console.log(element);
+    //   });
+    },
+  },
+  computed: {
+    sortByPrice() {
+      return this.checkedSizes;
+    },
   },
   methods: {
     setRange() {
-      if (this.minPrice > this.maxPrice) {
+      if (this.minPrice > this.maxPrice || this.maxPrice < this.minPrice) {
         const tmp = this.maxPrice;
         this.maxPrice = this.minPrice;
         this.minPrice = tmp;
       }
     },
+    // sortByPrice() {
+    // //   this.sortProducts(minPrice, maxPrice)
+    //   console.log(this.minPrice, this.maxPrice);
+    // },
   },
 };
 </script>

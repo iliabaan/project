@@ -8,9 +8,9 @@
     </div>
   </div>
   <div class="products-container">
-    <filterprodcomp :sortProducts='sortProducts' />
+    <filterprodcomp :sortProducts='sortProducts'/>
     <div class="products-container-block">
-    <sortprodcomp/>
+    <sortprodcomp :sortProducts='sortProducts'/>
     <productsview keys="sort_class"
      :values="$route.params.type"
      :showSorted=false
@@ -38,8 +38,8 @@ export default {
     sortprodcomp,
   },
   methods: {
-    sortProducts(sorters) {
-      this.$refs.productsview.sortProducts(sorters);
+    sortProducts(sorter) {
+      this.$refs.productsview.sortProducts(sorter);
     },
   },
 };

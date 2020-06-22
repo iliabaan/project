@@ -3,10 +3,10 @@
       <h3 @click="showCats = !showCats">Category <font-awesome-icon icon="caret-down"/></h3>
        <transition name="slide">
       <ul class="category-list" v-show="showCats">
-        <li v-for="category in categories" :key="category.title"
-         @click="sort(category)">
-          {{category.title}} <font-awesome-icon
-          v-show="category.isCheked || allChecked" icon="check"/>
+        <li v-for="category in categories"
+        :key="category.title"
+        @click="sort(category)">
+        {{category.title}}<font-awesome-icon icon="check" v-if="checkedFilter === category.type"/>
         </li>
       </ul>
        </transition>
@@ -14,16 +14,16 @@
             >Brand <font-awesome-icon icon="caret-down"/></h3>
             <transition name="slide">
             <ul class="brand-list" v-show="showBrands">
-        <li v-for="brand in brands" :key="brand" @click="sort(brand)">
-          {{brand}}
+        <li v-for="brand in brands" :key="brand.title" @click="sort(brand)">
+          {{brand.title}}<font-awesome-icon icon="check" v-if="checkedFilter === brand.type"/>
         </li>
       </ul>
             </transition>
             <h3 @click="showDesig = !showDesig">Designer <font-awesome-icon icon="caret-down"/></h3>
             <transition name="slide">
             <ul class="designer-list" v-show="showDesig">
-        <li v-for="designer in designers" :key="designer" @click="sort(designer)">
-          {{designer}}
+        <li v-for="designer in designers" :key="designer.title" @click="sort(designer)">
+          {{designer.title}}<font-awesome-icon icon="check" v-if="checkedFilter === designer.type"/>
         </li>
       </ul>
          </transition>
@@ -33,40 +33,48 @@
 <script>
 export default {
   name: 'filterprodcomp',
-  props: ['sortProducts'],
+  props: ['sortProducts', 'filterProducts'],
   data() {
     return {
       categories: [
-        { title: 'Accessories', type: 'accoseriese', isCheked: false },
-        { title: 'Bags', type: 'bags', isCheked: false },
-        { title: 'Denim', type: 'denim', isCheked: false },
-        { title: 'Hoodies & Sweatshirts', type: 'hoodies', isCheked: false },
-        { title: 'Jackets & Coats', type: 'jackets', isCheked: false },
-        { title: 'Pants', type: 'pants', isCheked: false },
-        { title: 'Polos', type: 'polos', isCheked: false },
-        { title: 'Shirts', type: 'shirts', isCheked: false },
-        { title: 'Shoes', type: 'shoes', isCheked: false },
-        { title: 'Shorts', type: 'shorts', isCheked: false },
-        { title: 'Sweaters & Knits', type: 'sweaters', isCheked: false },
-        { title: 'T-Shirts', type: 't-shirts', isCheked: false },
-        { title: 'Tanks', type: 'tanks', isCheked: false },
+        { title: 'Accessories', type: 'accoseriese', sort_type: 'category' },
+        { title: 'Bags', type: 'bags', sort_type: 'category' },
+        { title: 'Denim', type: 'denim' },
+        { title: 'Hoodies & Sweatshirts', type: 'hoodies', sort_type: 'category' },
+        { title: 'Jackets & Coats', type: 'jackets', sort_type: 'category' },
+        { title: 'Pants', type: 'pants', sort_type: 'category' },
+        { title: 'Polos', type: 'polos', sort_type: 'category' },
+        { title: 'Shirts', type: 'shirts', sort_type: 'category' },
+        { title: 'Shoes', type: 'shoes', sort_type: 'category' },
+        { title: 'Shorts', type: 'shorts', sort_type: 'category' },
+        { title: 'Sweaters & Knits', type: 'sweaters', sort_type: 'category' },
+        { title: 'T-Shirts', type: 't-shirts', sort_type: 'category' },
+        { title: 'Tanks', type: 'tanks', sort_type: 'category' },
       ],
-      brands: ['Mango', 'Banana', 'Grape', 'Apple', 'Peach'],
-      designers: ['Mango', 'Banana', 'Grape', 'Apple', 'Peach'],
+      brands: [
+        { title: 'Mango', type: 'Mango', sort_type: 'brand' },
+        { title: 'Banana', type: 'Banana', sort_type: 'brand' },
+        { title: 'Grape', type: 'Grape', sort_type: 'brand' },
+        { title: 'Apple', type: 'Apple', sort_type: 'brand' },
+        { title: 'Peach', type: 'Peach', sort_type: 'brand' },
+      ],
+      designers: [
+        { title: 'Mango', type: 'Mango', sort_type: 'brand' },
+        { title: 'Banana', type: 'Banana', sort_type: 'brand' },
+        { title: 'Grape', type: 'Grape', sort_type: 'brand' },
+        { title: 'Apple', type: 'Apple', sort_type: 'brand' },
+        { title: 'Peach', type: 'Peach', sort_type: 'brand' },
+      ],
       showCats: true,
       showDesig: false,
       showBrands: false,
-      allChecked: false,
+      checkedFilter: '',
     };
   },
   methods: {
     sort(sorter) {
+      this.checkedFilter = sorter.type;
       this.sortProducts(sorter);
-      this.allChecked = false;
-      const check = sorter;
-      if (check.isCheked === true) {
-        check.isCheked = false;
-      } else check.isCheked = true;
     },
   },
 };
@@ -109,15 +117,15 @@ export default {
     transition: .4s ease;
   }
 
-  .products-filters > ul li.active {
-      font-weight: 900;
-  }
-
   .products-filters > ul > li {
     font-size: 14px;
     line-height: 33px;
     font-weight: 400;
     color: #6f6e6e;
+  }
+
+  .products-filters > ul > li > svg {
+    margin-left: 10px;
   }
 
   /* .slide-enter, .slide-leave-to{
