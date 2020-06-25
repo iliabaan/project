@@ -19,22 +19,23 @@
                  min="0"
                  max ="100"
                  step="1"
-                 v-model="minPrice"
+                 v-model="prices.minPrice"
                  @change="setRange"
                  >
                 <input type="range"
                  min="0"
                  max ="100"
                  step="1"
-                 v-model="maxPrice"
+                 v-model="prices.maxPrice"
                  @change="setRange"
                  >
             </div>
  <div class="range-prices">
-            <p>${{minPrice}}</p>
-            <p>${{maxPrice}}</p>
+            <p>${{prices.minPrice}}</p>
+            <p>${{prices.maxPrice}}</p>
             </div>
         </div>
+        <button class="filter-btn" value="filter" @click="logger()"><p>FILTER</p></button>
     </div>
 </template>
 
@@ -54,17 +55,13 @@ export default {
         { type: 'XL', sort_type: 'size' },
         { type: 'XXL', sort_type: 'size' },
       ],
-      minPrice: 0,
-      maxPrice: 100,
+      prices: {
+        minPrice: 0,
+        maxPrice: 100,
+        sort_type: 'price',
+      },
       checkedSizes: [],
     };
-  },
-  watch: {
-    checkedSizes() {
-      this.checkedSizes.forEach((element) => {
-        this.sortProducts(element);
-      });
-    },
   },
   computed: {
     sortByPrice() {
@@ -73,16 +70,19 @@ export default {
   },
   methods: {
     setRange() {
-      if (this.minPrice > this.maxPrice || this.maxPrice < this.minPrice) {
-        const tmp = this.maxPrice;
-        this.maxPrice = this.minPrice;
-        this.minPrice = tmp;
+      if (this.prices.minPrice > this.prices.maxPrice
+      || this.prices.maxPrice < this.prices.minPrice) {
+        const tmp = this.prices.maxPrice;
+        this.prices.maxPrice = this.prices.minPrice;
+        this.prices.minPrice = tmp;
       }
     },
-    // sortByPrice() {
-    // //   this.sortProducts(minPrice, maxPrice)
-    //   console.log(this.minPrice, this.maxPrice);
-    // },
+    logger() {
+      if (this.checkedSizes.length) {
+        this.checkedSizes.forEach((element) => this.sortProducts(element));
+      } else this.sortProducts('showAll');
+      // this.sortProducts(this.prices);
+    },
   },
 };
 </script>
@@ -171,5 +171,9 @@ export default {
 
     .range-prices > p:last-of-type {
         margin-left: 150px;
+    }
+
+    .filter-btn {
+      padding: 20px;
     }
 </style>

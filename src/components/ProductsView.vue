@@ -15,6 +15,7 @@
             <img :src='product.img' alt="product_img">
             <h3>{{product.title}}</h3>
             <p class="price">${{product.price}}</p>
+            <p>{{product.sizes.toString()}}</p>
             </router-link>
         </div>
     </div>
@@ -28,6 +29,7 @@ export default {
   data() {
     return {
       sortedProducts: [],
+      filteredByCats: [],
       showMessage: false,
     };
   },
@@ -49,18 +51,29 @@ export default {
     sortProducts(sorter) {
       this.showSorted = true;
       if (sorter.sort_type === 'category') {
-        this.sortedProducts = [];
-        this.sortedProducts = this.filteredProducts([this.keys, this.values])
+        this.filteredByCats = [];
+        this.filteredByCats = this.filteredProducts([this.keys, this.values])
           .filter((item) => item.type === sorter.type);
+        this.sortedProducts = this.filteredByCats;
+        console.log(this.sortedProducts);
       } else if (sorter.sort_type === 'size') {
-        if (this.sortedProducts.length) {
+        if (this.filteredByCats.length) {
           this.sortedProducts = this.sortedProducts
             .filter((item) => item.sizes.includes(sorter.type.toString()));
           return this.sortedProducts;
-        } this.sortedProducts = this.filteredProducts([this.keys, this.values])
+        }
+        this.sortedProducts = this.filteredProducts([this.keys, this.values])
           .filter((item) => item.sizes.includes(sorter.type.toString()));
+        return this.sortedProducts;
+      } else if (sorter === 'showAll') {
+        if (this.filteredByCats.length) {
+          this.sortedProducts = this.filteredByCats;
+          return this.filteredByCats;
+        } this.showSorted = false;
+        this.sortedProducts = this.filteredProducts([this.keys, this.values]);
+        return this.sortedProducts;
       } else {
-        if (this.sortedProducts.length) {
+        if (this.filteredByCats.length) {
           this.sortedProducts = this.sortedProducts
             .filter((item) => item[sorter.sort_type] === sorter.type);
           return this.sortedProducts;
@@ -69,25 +82,6 @@ export default {
       }
       return this.sortedProducts;
     },
-    a() {
-      this.sortedProducts = this.filteredProducts([this.keys, this.values]);
-    },
-    // filterProducts(sorterByBrand, sorterByDesigner, sorterBySize, sorterByPrice) {
-    //   if (sorterByBrand) {
-    //     console.log(sorterByBrand, 'PV');
-    //     this.sortedProducts.filter((item) => item.brand === sorterByBrand);
-    //   }
-    //   if (sorterByDesigner) {
-    //     console.log(sorterByBrand, 'BAD PV');
-    //     this.sortedProducts.filter((item) => item.designer === sorterByDesigner);
-    //   }
-    //   if (sorterBySize) {
-    //     this.sortedProducts.filter((item) => item.size === sorterBySize);
-    //   }
-    //   if (sorterByPrice) {
-    //     this.sortedProducts.filter((item) => item.price === sorterByPrice);
-    //   }
-    // },
     showMessageFunc(boo) {
       this.showMessage = boo;
     },
