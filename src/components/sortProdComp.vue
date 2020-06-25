@@ -63,7 +63,6 @@ export default {
     checkedSizes() {
       this.checkedSizes.forEach((element) => {
         this.sortProducts(element);
-        console.log(element);
       });
     },
   },
