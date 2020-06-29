@@ -39,7 +39,12 @@ export default {
   },
   methods: {
     sortProducts(sorter) {
-      this.$refs.productsview.sortProducts(sorter);
+      if (sorter.sort_type === 'category') {
+        this.$refs.productsview.filterByCategories(sorter);
+      } else if (sorter.sort_type === 'size') {
+        console.log('sss');
+        this.$refs.productsview.filterBySize(sorter);
+      }
     },
   },
 };

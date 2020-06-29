@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       sortedProducts: [],
-      filteredByCats: [],
+      filteredByCategories: [],
       showMessage: false,
     };
   },
@@ -48,38 +48,23 @@ export default {
   },
   methods: {
     ...mapActions(['fetchProducts']),
-    sortProducts(sorter) {
+    filterByCategories(sorter) {
       this.showSorted = true;
-      if (sorter.sort_type === 'category') {
-        this.filteredByCats = [];
-        this.filteredByCats = this.filteredProducts([this.keys, this.values])
-          .filter((item) => item.type === sorter.type);
-        this.sortedProducts = this.filteredByCats;
-        console.log(this.sortedProducts);
-      } else if (sorter.sort_type === 'size') {
-        if (this.filteredByCats.length) {
-          this.sortedProducts = this.sortedProducts
-            .filter((item) => item.sizes.includes(sorter.type.toString()));
-          return this.sortedProducts;
-        }
-        this.sortedProducts = this.filteredProducts([this.keys, this.values])
+      this.sortedProducts = [];
+      this.sortedProducts = this.filteredProducts([this.keys, this.values])
+        .filter((item) => item.type === sorter.type);
+      this.filteredByCategories = this.sortedProducts;
+      return this.sortedProducts;
+    },
+    filterBySize(sorter) {
+      this.showSorted = true;
+      if (this.filteredByCategories.length) {
+        this.sortedProducts = this.sortedProducts
           .filter((item) => item.sizes.includes(sorter.type.toString()));
         return this.sortedProducts;
-      } else if (sorter === 'showAll') {
-        if (this.filteredByCats.length) {
-          this.sortedProducts = this.filteredByCats;
-          return this.filteredByCats;
-        } this.showSorted = false;
-        this.sortedProducts = this.filteredProducts([this.keys, this.values]);
-        return this.sortedProducts;
-      } else {
-        if (this.filteredByCats.length) {
-          this.sortedProducts = this.sortedProducts
-            .filter((item) => item[sorter.sort_type] === sorter.type);
-          return this.sortedProducts;
-        } this.sortedProducts = this.filteredProducts([this.keys, this.values])
-          .filter((item) => item[sorter.sort_type] === sorter.type);
-      }
+      } this.sortedProducts = this.filteredProducts([this.keys, this.values])
+        .filter((item) => item.sizes.includes(sorter.type.toString()));
+      console.log(this.sortedProducts);
       return this.sortedProducts;
     },
     showMessageFunc(boo) {
