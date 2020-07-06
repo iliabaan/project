@@ -1,10 +1,37 @@
 export default {
   state: {
     products: [],
+    cart: [],
   },
   mutations: {
     updateAllProducts(state, products) {
       state.products = products;
+    },
+    set_cart: (state, product) => {
+      if (state.cart.length) {
+        let doesItemExists = false;
+        state.cart.map((item) => { // eslint-disable-line
+          if (item.id === product.id) {
+            doesItemExists = true;
+            item.quantity++; // eslint-disable-line
+          }
+        });
+        if (!doesItemExists) {
+          state.cart.push(product);
+        }
+      } else {
+        state.cart.push(product);
+      }
+    },
+    remove_from_cart: (state, product) => {
+      state.cart.map((item) => { // eslint-disable-line
+        if (item.id === product.id) {
+          if (item.quantity > 1) {
+            item.quantity--; // eslint-disable-line
+          } else state.cart.splice(state.cart.indexOf(item), 1);
+        }
+      });
+      // state.cart.splice(index, 1);
     },
   },
   actions: {
@@ -13,23 +40,19 @@ export default {
       const products = await res.json();
       ctx.commit('updateAllProducts', products);
     },
+    add_to_cart({ commit }, product) {
+      commit('set_cart', product);
+    },
+    remove_from_cart({ commit }, index) {
+      commit('remove_from_cart', index);
+    },
   },
   getters: {
     allProducts: (state) => state.products,
     filteredProducts: (state) => (sorters) => state.products
       .filter((product) => product[sorters[0]] === sorters[1]),
-    // if (extraSort) {
-    //   const filtered = state.products.filter((product) => product[sorters[0]] === sorters[1]);
-    //   filtered.map((item) => {
-    //     console.log(item.type, extraSort);
-    //     if (item.type === extraSort) {
-    //       console.log(item);
-    //       vm.sortedProducts.push(item);
-    //       console.log(vm.sortedProducts);
-    //     }
-    //     return vm.sortedProducts;
-    //   });
-    // } else
-    // },
+    product: (state) => (id) => state.products
+      .find((product) => product.id === id),
+    cart: (state) => state.cart,
   },
 };

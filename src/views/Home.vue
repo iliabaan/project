@@ -12,7 +12,7 @@
 
 <script>
 
-// В компонент featuredproducts передаем ключ (keys) и значение (values)
+// В компонент productsview передаем ключ (keys) и значение (values)
 import index from '@/components/index.vue';
 import productsview from '@/components/ProductsView.vue';
 import posterandsubscribe from '@/components/posterAndSubscribe.vue';

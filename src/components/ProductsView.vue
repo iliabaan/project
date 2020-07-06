@@ -3,19 +3,18 @@
         <h1 v-if="header">{{ header }}</h1>
         <div class="products__list">
           <h4 class="empty-msg" v-if="showMessage">Nothing to show :(</h4>
-            <router-link :to="`product/id/${product.id}`"
+            <router-link :to="`/product/${product.id}`"
             class="product"
             v-for="product in filtered" :key="product.id"
             >
              <div class="add-to-cart">
-                 <div class="add-to-cart__block">
+                 <div class="add-to-cart__block" @click.prevent="addToCart(product)">
                      <p><font-awesome-icon icon="cart-plus" />Add to Cart</p>
                  </div>
                  </div>
             <img :src='product.img' alt="product_img">
             <h3>{{product.title}}</h3>
             <p class="price">${{product.price}}</p>
-            <p>{{product.sizes.toString()}}</p>
             </router-link>
         </div>
     </div>
@@ -47,7 +46,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['fetchProducts']),
+    ...mapActions(['fetchProducts', 'add_to_cart']),
     filterByCategories(sorter) {
       this.showSorted = true;
       this.sortedProducts = [];
@@ -69,6 +68,10 @@ export default {
     },
     showMessageFunc(boo) {
       this.showMessage = boo;
+    },
+    addToCart(product) {
+      product = Object.assign({}, product, { quantity: 1}); // eslint-disable-line
+      this.add_to_cart(product);
     },
   },
   mounted() {

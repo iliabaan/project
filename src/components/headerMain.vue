@@ -22,8 +22,11 @@
           </form>
         </div>
         <div class="header__right">
-          <div class="cart"></div>
-          <a href="#"><img src="../assets/img/cart.svg" alt="cart"></a>
+          <div class="cart" v-if="showCart">
+            <miniCartComp />
+          </div>
+            <img src="../assets/img/cart.svg" alt="cart"
+            class="cart__svg" @click="showCart = !showCart">
           <a href="#" class="button_account">
             <p class="button_account_text">My Account <font-awesome-icon icon="caret-down">
               </font-awesome-icon>
@@ -44,9 +47,18 @@
 </template>
 
 <script>
+import miniCartComp from '@/components/miniCartComp.vue';
 
 export default {
   name: 'headerMain',
+  data() {
+    return {
+      showCart: false,
+    };
+  },
+  components: {
+    miniCartComp,
+  },
 };
 </script>
 
@@ -156,6 +168,10 @@ header {
   align-items: center;
   color: #a4a4a4;
   border-left: 1px solid #e8e8e8;
+}
+
+.cart__svg {
+  cursor: pointer;
 }
 
 .button_account {
