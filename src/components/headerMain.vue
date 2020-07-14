@@ -7,7 +7,7 @@
             <h1 class="logo_text">BRAN<span class="logo_text logo_text_pink">D</span></h1>
           </router-link>
           <form class="header__search" action="#">
-            <router-link to="/products/" class="button_browse">
+            <router-link to="/products/all" class="button_browse">
               <p class="button_browse_text">Browse</p>
               <font-awesome-icon icon="caret-down" class="caret-down"></font-awesome-icon>
             </router-link>

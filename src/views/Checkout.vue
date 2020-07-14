@@ -1,30 +1,30 @@
 <template>
   <div>
-      <div class="cart__head"><h1>cart</h1></div>
-    <cartcomp/>
+      <div class="checkout__head"><h1>Checkout</h1></div>
+      <checkoutcomp />
   </div>
 </template>
 
 <script>
-import cartcomp from '@/components/cartComp.vue';
+import checkoutcomp from '@/components/checkoutComp.vue';
 
 export default {
-  name: 'Cart',
+  name: 'Checkout',
   components: {
-    cartcomp,
+    checkoutcomp,
   },
 };
 </script>
 
 <style scoped>
-  .cart__head {
+  .checkout__head {
     display: flex;
     align-items: center;
     height: 100px;
     background-color: #f8f3f4;
   }
 
-  .cart__head > h1 {
+  .checkout__head > h1 {
     margin-left: 5%;
     font-size: 24px;
     font-weight: 900;

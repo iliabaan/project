@@ -90,6 +90,7 @@ export default {
 <style scoped>
     .products-sort {
         height: 125px;
+        margin-top: 10px;
         display: flex;
         flex-direction: row;
         justify-content: space-around;

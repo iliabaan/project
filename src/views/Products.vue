@@ -2,7 +2,7 @@
 <div>
   <div class="products-head">
     <div class="products-head-els">
-    <h1>{{$route.params.type}}</h1>
+    <h1>{{$route.params.type.replace(/-/g, ' ')}}</h1>
     <p><router-link to="/products" class="link">{{$route.path
     .slice(1, 10)}}</router-link> <span>{{$route.path.slice(10)}}</span></p>
     </div>

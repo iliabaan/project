@@ -34,13 +34,16 @@ export default {
   },
   name: 'ProductsView',
   computed: {
-    ...mapGetters(['filteredProducts']),
+    ...mapGetters(['filteredProducts', 'allProducts']),
     filtered() {
       if (this.showSorted === true) {
         if (this.sortedProducts.length) {
           this.showMessageFunc(false);
           return this.sortedProducts;
         } return this.showMessageFunc(true);
+      } if (this.values === 'all') {
+        this.showMessageFunc(false);
+        return this.allProducts;
       } this.showMessageFunc(false);
       return this.filteredProducts([this.keys, this.values]);
     },
@@ -70,11 +73,12 @@ export default {
       this.showMessage = boo;
     },
     addToCart(product) {
-      product = Object.assign({}, product, { quantity: 1}); // eslint-disable-line
+      product = Object.assign({}, product, { quantity: 1, checkedColor: product.colors[1], checkedSize: product.sizes[0]}); // eslint-disable-line
       this.add_to_cart(product);
     },
   },
   mounted() {
+    console.log(this.keys, this.values);
     this.fetchProducts();
   },
 };

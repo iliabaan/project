@@ -31,7 +31,10 @@ export default {
           } else state.cart.splice(state.cart.indexOf(item), 1);
         }
       });
-      // state.cart.splice(index, 1);
+    },
+    clear_cart: (state) => {
+      state.cart = [];
+      return state.cart;
     },
   },
   actions: {
@@ -45,6 +48,9 @@ export default {
     },
     remove_from_cart({ commit }, index) {
       commit('remove_from_cart', index);
+    },
+    clear_cart({ commit }) {
+      commit('clear_cart');
     },
   },
   getters: {

@@ -50,8 +50,8 @@
         <div class="subscribe">
             <p>Subscribe<br><span>FOR OUR NEWLETTER AND PROMOTION</span></p>
             <div class="subscribe-input_email">
-            <input type="text" placeholder="Enter Your Email">
-            <div>Subscribe</div>
+            <input type="email" placeholder="Enter Your Email" v-model="email">
+            <div @click="getEmail">Subscribe</div>
             </div>
         </div>
     </div>
@@ -59,12 +59,24 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'posterAndSubcribe',
   data() {
     return {
       users: [],
+      email: '',
     };
+  },
+  methods: {
+    getEmail() {
+      this.order.email = this.email;
+      console.log(this.order.email);
+    },
+  },
+  computed: {
+    ...mapGetters(['order']),
   },
   async mounted() {
     await this.$root.getJson('https://jsonplaceholder.typicode.com/users')

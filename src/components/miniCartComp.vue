@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="cart__block">
+    <div class="cart__block" v-if="showCart">
         <h4 v-if="cart.length === 0">Cart is empty</h4>
         <div class="products__block" v-if="cart.length">
         <div class="product__block" v-for="product in cart" :key="product.id">
@@ -26,8 +26,8 @@
             <p>${{(cart.reduce((accumulator, current) =>
                 +accumulator + +current.price * current.quantity, 0)).toFixed(2)}}</p>
         </div>
-        <button class="checkout">Checkout</button>
-        <button class="go-to-cart">Go to cart</button>
+        <router-link to="/checkout" class="checkout">Checkout</router-link>
+        <router-link to="/cart" class="go-to-cart">Go to cart</router-link>
     </div>
   </div>
 </template>
@@ -46,6 +46,7 @@ export default {
           starHeight: 12,
         },
       },
+      showCart: true,
     };
   },
   components: {
@@ -175,6 +176,10 @@ export default {
 }
 
 .checkout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
     width: 80%;
     margin: 0 auto;
     margin-top: 32px;
@@ -189,6 +194,10 @@ export default {
 }
 
 .go-to-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
     width: 80%;
     height: 50px;
     margin: 0 auto;
