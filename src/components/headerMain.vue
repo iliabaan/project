@@ -12,13 +12,26 @@
               <font-awesome-icon icon="caret-down" class="caret-down"></font-awesome-icon>
             </router-link>
             <div class="search_field">
-              <input type="text" class="search_browse" placeholder="Search for Item...">
-              <a href="#">
+              <input type="text" class="search_browse" placeholder="Search for Item..."
+              v-model="userSearch" @keyup="searchItems">
+              <a href="#" @click="searchItems">
                 <div class="icon_search_box">
                   <font-awesome-icon icon="search" class="search_position"></font-awesome-icon>
                 </div>
               </a>
             </div>
+              <div class="searched__products" v-if="searched.length">
+              <router-link :to="`/product/${product.id}`"
+              v-for="product in searched" :key="product.id" target="_blank">
+                <div class="searched__product">
+                <p><img :src="product.img" alt=""></p>
+                <div>
+                <p>{{product.title}}</p>
+                <p>${{product.price}}</p>
+                </div>
+                </div>
+              </router-link>
+              </div>
           </form>
         </div>
         <div class="header__right">
@@ -48,16 +61,34 @@
 
 <script>
 import miniCartComp from '@/components/miniCartComp.vue';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'headerMain',
   data() {
     return {
       showCart: false,
+      userSearch: '',
+      searched: [],
     };
   },
   components: {
     miniCartComp,
+  },
+  computed: {
+    ...mapGetters(['allProducts']),
+  },
+  methods: {
+    ...mapActions(['fetchProducts']),
+    searchItems() {
+      if (this.userSearch.length) {
+        const regexp = new RegExp(this.userSearch, 'i');
+        this.searched = this.allProducts.filter((item) => regexp.test(item.title));
+      } else this.searched = [];
+    },
+  },
+  mounted() {
+    this.fetchProducts();
   },
 };
 </script>
@@ -168,6 +199,51 @@ header {
   align-items: center;
   color: #a4a4a4;
   border-left: 1px solid #e8e8e8;
+}
+
+.searched__products {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 2px solid rgb(233, 227, 227);
+  border-radius: 5px;
+  position: absolute;
+  margin-top: 50px;
+  width: 350px;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.searched__product {
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 10px;
+  height: 100px;
+}
+
+.searched__products > a {
+  text-decoration: none;
+  color: #222222;
+}
+
+.searched__products > a:hover {
+  background-color: #cdcdcc;
+}
+
+.searched__product > p > img {
+    width: 72px;
+    height: 85px;
+}
+
+.searched__product > div {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.searched__product > div > p {
+  margin: 5px;
 }
 
 .cart__svg {
