@@ -98,9 +98,10 @@ export default {
 
  .featured > .products__list {
    width: 100%;
+   max-width: 1400px;
    justify-content: space-around;
    display: flex;
-   margin-left: 0;
+   margin: 0 auto;
  }
 
 .products__list {
