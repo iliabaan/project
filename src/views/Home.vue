@@ -39,5 +39,7 @@ export default {
     margin-left: 2em;
     background-color: #f16d7f;
     text-decoration: none;
+    color: #ffffff;
+    margin: 0 auto;
 }
 </style>
