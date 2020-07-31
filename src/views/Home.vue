@@ -35,11 +35,12 @@ export default {
 
 <style scoped>
 .btn-browse__all {
-    padding: .7em 1.2em;
-    margin-left: 2em;
+    padding: 1em 1.2em;
+    display: block;
     background-color: #f16d7f;
-    text-decoration: none;
     color: #ffffff;
+    text-decoration: none;
     margin: 0 auto;
+    width: 170px;
 }
 </style>
