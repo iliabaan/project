@@ -39,8 +39,10 @@ export default {
   background-image: url(https://i.ibb.co/TRDTJD2/promo-back.jpg);
   background-color: #e8e8e8;
   background-repeat: no-repeat;
+  max-width: 1600px;
   width: 100%;
   height: 40em;
+  margin: 0 auto;
 }
 
 .promo-text {
@@ -75,7 +77,7 @@ export default {
   justify-content: space-between;
   margin: 0 auto;
   margin-top: 6em;
-  width: 95%;
+  max-width: 1400px;
 }
 
 .offers h3 {
@@ -97,7 +99,6 @@ export default {
 .offers__left, .offers__right {
   display: inherit;
   flex-direction: column;
-  width: 45%;
   margin: 0 auto;
 }
 
@@ -105,6 +106,7 @@ export default {
   background-image: url(https://i.ibb.co/0f6BJvf/Layer-30.jpg);
   background-repeat: no-repeat;
   height: 33.8em;
+  width: 540px;
 }
 
 .offers__left .offers__poster:last-of-type {
@@ -114,11 +116,13 @@ export default {
   background-position: 124%;
   height: 16em;
   margin-top: 1.2em;
+  width: 540px;
 }
 
 .offers__right .offers__poster:first-of-type  {
   background-image: url(https://i.ibb.co/gM8ZrQv/Layer-32.jpg);
   background-repeat: no-repeat;
+  width: 540px;
   height: 16em;
 }
 
@@ -126,6 +130,7 @@ export default {
   background-image: url(https://i.ibb.co/4ptQDkq/Layer-31.jpg);
   background-repeat: no-repeat;
   height: 33.8em;
+  width: 540px;
   margin-top: 1.2em;
 }
 

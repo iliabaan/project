@@ -236,12 +236,12 @@ export default {
         this.setData('', 'email');
         this.setData('', 'password');
       }
-      const order = Object.values(this.order);
-      order.forEach((el) => {
-        if (el === null) {
-          console.log(el, 'null');
-        } console.log(el, 'norm');
-      });
+      // const order = Object.values(this.order);
+      // order.forEach((el) => {
+      //   if (el === null) {
+      //     console.log(el, 'null');
+      //   } console.log(el, 'norm');
+      // });
     },
   },
 };

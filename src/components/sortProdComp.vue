@@ -35,7 +35,7 @@
             <p>${{prices.maxPrice}}</p>
             </div>
         </div>
-        <button class="filter-btn" value="filter" @click="logger()"><p>FILTER</p></button>
+        <button class="filter-btn" value="filter" @click="filter"><p>FILTER</p></button>
     </div>
 </template>
 
@@ -77,7 +77,7 @@ export default {
         this.prices.minPrice = tmp;
       }
     },
-    logger() {
+    filter() {
       if (this.checkedSizes.length) {
         this.checkedSizes.forEach((element) => this.sortProducts(element));
       } else this.sortProducts('showAll');
@@ -175,6 +175,14 @@ export default {
     }
 
     .filter-btn {
-      padding: 20px;
+      width: 100px;
+      height: 30px;
+      border-radius: 5px;
+      background-color: #f16d7f;
+      color: #ffffff;
+      font-size: 16px;
+      align-self: center;
+      outline: none;
+      cursor: pointer;
     }
 </style>

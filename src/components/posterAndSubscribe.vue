@@ -92,12 +92,14 @@ export default {
 <style scoped>
 
 .poster_and_subscribe {
-    margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+   margin-top: 5em;
 }
 
 .poster__block {
      display: flex;
-     width: 80%;
      margin: 0 auto;
      height: 33em;
  }
@@ -105,7 +107,7 @@ export default {
 .poster__block-pic {
     background-image: url(https://i.ibb.co/P5VKv92/Layer-38.jpg);
     background-repeat: no-repeat;
-    width: 48em;
+    width: 767px;
 }
 
 .poster__block-pic > h3 {
@@ -126,7 +128,7 @@ export default {
 }
 
 .poster__block-desc {
-    width: 30%;
+    width: 300px;
     background-color: #222224;
     display: flex;
     flex-direction: column;
@@ -170,8 +172,12 @@ export default {
 }
 
 .subscribe__block {
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
     margin-top: 5em;
     background-image: url(https://i.ibb.co/wCBc1st/Layer-41.jpg);
+    background-repeat: no-repeat;
     height: 27.375em;
     display: flex;
     flex-direction: row;

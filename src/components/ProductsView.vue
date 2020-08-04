@@ -94,6 +94,7 @@ export default {
 .products h1 {
     display: inherit;
     margin: 0 auto;
+    margin-bottom: 50px;
 }
 
  .featured > .products__list {

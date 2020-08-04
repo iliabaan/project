@@ -246,6 +246,10 @@ header {
   margin: 5px;
 }
 
+.cart {
+  width: 18px;
+}
+
 .cart__svg {
   cursor: pointer;
 }

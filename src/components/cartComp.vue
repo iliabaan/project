@@ -321,7 +321,7 @@ h3 {
 }
 
 .shipping > select {
-    width: 358px;
+    width: 355px;
     height: 45px;
     background-color: #ffffff;
     border: 1.0px solid #eaeaea;

@@ -58,7 +58,7 @@ export default {
   data() {
     return {
       menuElemsOne: [
-        { title: 'Home', path: '/' },
+        { title: 'Home', path: '' },
         { title: 'Shop', path: 'shop' },
         { title: 'About', path: 'about' },
         { title: 'How It Works', path: 'howitworks' },

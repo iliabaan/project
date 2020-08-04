@@ -71,7 +71,6 @@ export default {
     flex-direction: column;
     width: 252px;
     margin-top: 45px;
-    right: 85px;
     z-index: 10;
     background: #ffffff;
     border: 2px solid rgb(233, 227, 227);
