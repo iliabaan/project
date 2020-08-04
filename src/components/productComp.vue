@@ -315,6 +315,7 @@ export default {
     display: flex;
     margin: 0 auto;
     margin-top: 72px;
+    max-width: 1200px;
     width: 90%;
   }
 
