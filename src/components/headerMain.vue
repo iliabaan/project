@@ -35,8 +35,8 @@
           </form>
         </div>
         <div class="header__right">
-          <div class="cart" v-if="showCart">
-            <miniCartComp />
+          <div class="cart">
+            <miniCartComp v-if="showCart"/>
           </div>
             <img src="../assets/img/cart.svg" alt="cart"
             class="cart__svg" @click="showCart = !showCart">
