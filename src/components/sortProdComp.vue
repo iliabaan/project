@@ -91,6 +91,7 @@ export default {
     .products-sort {
         height: 125px;
         margin-top: 10px;
+        width: 1000px;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
