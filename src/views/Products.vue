@@ -60,6 +60,10 @@ export default {
     margin-top: 70px;
   }
 
+ .products-container-block {
+   width: 1000px;
+ }
+
   .products-head {
     display: flex;
     height: 100px;
