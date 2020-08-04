@@ -55,7 +55,9 @@ export default {
   .products-container {
     display: flex;
     flex-direction: row;
+    max-width: 1200px;
     margin: 0 auto;
+    margin-top: 70px;
   }
 
   .products-head {
@@ -98,11 +100,5 @@ export default {
   .products-head-els > p > span {
     font-weight: 700;
     color: #f16d7f;
-  }
-
-  .products-container {
-    margin-top: 70px;
-    width: 90%;
-    margin: 0 auto;
   }
 </style>
