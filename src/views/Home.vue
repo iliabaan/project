@@ -3,7 +3,7 @@
     <index />
     <productsview keys="featured" values="true"
     header="Featured Products" v-bind:class="{ featured: isActive }"/>
-    <router-link to="products" class="btn-browse__all">Browse All Products
+    <router-link to="/products/all" class="btn-browse__all">Browse All Products
       <font-awesome-icon icon="long-arrow-alt-right" />
     </router-link>
     <posterandsubscribe />
