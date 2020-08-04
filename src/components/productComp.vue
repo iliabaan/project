@@ -313,9 +313,10 @@ export default {
 
   .related__products {
     display: flex;
+    justify-content: space-around;
     margin: 0 auto;
     margin-top: 72px;
-    max-width: 1200px;
+    max-width: 1400px;
     width: 90%;
   }
 
