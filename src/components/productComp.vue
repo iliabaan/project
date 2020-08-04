@@ -46,7 +46,7 @@
               <input type="number" value="1">
             </div>
           </div>
-          <button class="desc__add-to-cart-btn">
+          <button class="desc__add-to-cart-btn" @click="addToCart(productOnPage)">
             <font-awesome-icon icon="cart-arrow-down"/>Add to Cart</button>
       </div>
       <h3 class="related-header">you may like also</h3>
@@ -55,7 +55,7 @@
             class="related__product"
             v-for="product in relatedProducts" :key="product.id" target="_blank">
              <div class="add-to-cart">
-                 <div class="add-to-cart__block">
+                 <div class="add-to-cart__block" @click.prevent="addToCart(product)">
                      <p><font-awesome-icon icon="cart-plus" />Add to Cart</p>
                  </div>
                  </div>
@@ -91,7 +91,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['fetchProducts']),
+    ...mapActions(['fetchProducts', 'add_to_cart']),
     randomizeRelated() {
       this.related = [];
       for (let i = 0; i < 4; i += 1) {
@@ -100,6 +100,10 @@ export default {
         this.related.push(products[random]);
         products.splice(random, 1);
       }
+    },
+    addToCart(product) {
+      product = Object.assign({}, product, { quantity: 1, checkedColor: product.colors[1], checkedSize: product.sizes[0]}); // eslint-disable-line
+      this.add_to_cart(product);
     },
   },
   mounted() {
