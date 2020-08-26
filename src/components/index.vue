@@ -6,16 +6,17 @@
   </div>
   <div class="offers">
     <div class="offers__left">
-      <router-link to="man" class="offers__poster"><div><h3>hOT dEAL <br><span>FOR MEN</span></h3>
+      <router-link to="/products/man"
+      class="offers__poster"><div><h3>hOT dEAL <br><span>FOR MEN</span></h3>
       </div></router-link>
-      <router-link to="accoseriese" class="offers__poster"><div>
+      <router-link to="/products/accoseriese" class="offers__poster"><div>
         <h3>LUXIROUS & trendy <br><span>ACCESORIES</span></h3>
       </div></router-link>
     </div>
     <div class="offers__right">
-      <router-link to="women" class="offers__poster"><div>
+      <router-link to="/products/women" class="offers__poster"><div>
         <h3>30% offer <br><span>women</span></h3></div></router-link>
-      <router-link to="kids" class="offers__poster">
+      <router-link to="/products/kids" class="offers__poster">
       <div><h3>new arrivals <br><span>FOR kids</span></h3></div></router-link>
     </div>
   </div>

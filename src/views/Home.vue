@@ -41,6 +41,7 @@ export default {
     color: #ffffff;
     text-decoration: none;
     margin: 0 auto;
+    margin-top: 30px;
     width: 170px;
 }
 </style>

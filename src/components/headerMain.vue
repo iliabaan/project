@@ -212,6 +212,7 @@ header {
   width: 350px;
   height: 300px;
   overflow-y: scroll;
+  z-index: 100;
 }
 
 .searched__product {

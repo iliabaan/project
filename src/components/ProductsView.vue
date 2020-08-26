@@ -108,6 +108,7 @@ export default {
 .products__list {
     display: inherit;
     flex-direction: row;
+    width: 90%;
     max-width: 1200px;
     margin: 0 auto;
     margin-left: 60px;

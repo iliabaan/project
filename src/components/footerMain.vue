@@ -40,7 +40,7 @@
       </div>
       </div>
       <div class="footer__bottom">
-        <p class="footer__bottom-copyright">© 2020 Brand All Rights Reserved.</p>
+        <p class="footer__bottom-copyright">© 2020 Brand. All Rights Reserved.</p>
         <div class="footer__bottom-social_media">
         <a href=""><img src="../assets/img/facebook-f-brands.svg" alt="#"></a>
         <a href=""><img src="../assets/img/twitter-brands.svg" alt="#"></a>
@@ -72,11 +72,11 @@ export default {
         { title: 'Promotion', path: 'promotion' },
       ],
       menuElemsThree: [
-        { title: 'Men', path: 'man' },
-        { title: 'Women', path: 'woman' },
-        { title: 'Child', path: 'kids' },
-        { title: 'Apparel', path: 'accoseriese' },
-        { title: 'Brows All', path: '/' },
+        { title: 'Men', path: '/products/man' },
+        { title: 'Women', path: '/products/woman' },
+        { title: 'Child', path: '/products/kids' },
+        { title: 'Apparel', path: '/products/accoseriese' },
+        { title: 'Browse All', path: '/products/all' },
       ],
     };
   },
